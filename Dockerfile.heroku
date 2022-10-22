@@ -1,5 +1,7 @@
 FROM susannasalata/pocket_memory:latest
 
+WORKDIR /
+
 # set environmetn variables
 ENV JWT_SECRET_KEY=qwerty
 ENV JWT_REFRESH_SECRET_KEY=ytrew
