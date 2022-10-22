@@ -34,4 +34,4 @@ USER myuser
 # CMD ["gunicorn", "-b", "127.0.0.1:8000", "app:app"]
 # $PORT is set by Heroku
 #CMD gunicorn --bind 0.0.0.0:$PORT wsgi
-CMD uvicorn app:app --host 0.0.0.0:$PORT
+CMD uvicorn app:app --host 0.0.0.0 --port $PORT
