@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+    <link href="{{ url_for('static', path='styles.css') }}" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{ url_for('static', path='image/owl.ico') }}"
+    />
+    <style>
+      body {
+        height: 100vh;
+        background: linear-gradient(25.06deg, #e4f1ed 20.8%, #ffffff 66.53%);
+      }
+      .btnIcon:hover > i,
+      .btnIcon:focus > i {
+        color: #007b5e;
+      }
+    </style>
+    <title>POCKET MEMORY</title>
+  </head>
+  <body>
+    <section class="nav-section d-flex w-100">
+      {% include 'components/nav.html' %}
+    </section>
+    <section class="contacts">
+      <div>
+        <button
+          type="button"
+          class="btn btn-default btn-custom"
+          data-bs-toggle="modal"
+          data-bs-target="#staticBackdrop"
+        >
+          Add Contacts
+        </button>
+        {% include 'components/modal.html' %} {% include
+        'components/delete-modal.html' %}
+      </div>
+      <div class="w-100">
+        {% if list %}
+        <div>
+          <table class="table align-middle mb-0 bg-white">
+            <thead class="bg-light">
+              <tr>
+                <th>Name</th>
+                <th>Phones</th>
+                <th>Address</th>
+                <th>Birth Day</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for contact in list %}
+              <tr>
+                <td>
+                  <div class="d-flex align-items-center">
+                    <div class="ms-3">
+                      <p class="fw-bold mb-1">{{contact.name}}</p>
+                      {%for listEmail in contact.emails %}
+                      <a href="mailto:{{listEmail.email}}">
+
+                        <p class="text-muted mb-0">{{listEmail.email}}</p>
+                      </a>
+                      {% endfor %}
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  {%for listPhones in contact.phones %}
+                  <a href="tel:{{listPhones.phone}}">
+                  <p class="text-muted mb-0">{{listPhones.phone}}</p>
+                </a>
+                  {% endfor %}
+                </td>
+                <td>
+                  {% if contact.address %}
+                  <p class="text-muted mb-0">{{contact.address}}</p>
+                  {% else %}
+                  <p class="text-muted mb-0">Not added</p>
+                  {% endif %}
+                </td>
+                <td>
+                  <p class="text-muted mb-0">
+                    {{contact.birth_date.strftime('%Y-%m-%d') if contact.birth_date else Date }}
+                  </p>
+                </td>
+                <td>
+                  <div
+  class="modal fade"
+  id="edit"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="edit"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="edit">POCKET MEMORY</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form action="/contacts" method="POST">
+          <!-- Hidden -->
+          <input type="hidden" name="new_contact-id" value="{{contact.id}}">
+          <!-- Name input -->
+          <div class="form-outline mb-4">
+            <input
+              type="text"
+              id="name"
+              name="new_name"
+              class="form-control"
+              value="{{contact.name}}"
+            />
+            <label class="form-label" for="name">Name</label>
+          </div>
+
+          <!-- Email input -->
+          {%for listEmail in contact.emails %}
+          <div class="form-outline mb-4">
+            <input
+              type="email"
+              id="emails"
+              name="new_emails"
+              class="form-control"
+              value="{{listEmail.email}}"
+            />
+            <label class="form-label" for="emails">Email</label>
+          </div>
+          {% endfor %}
+          <!-- Password input -->
+          <div class="form-outline mb-4">
+            <input
+              type="text"
+              id="address"
+              name="new_address"
+              class="form-control"
+            />
+            <label class="form-label" for="address">Address</label>
+          </div>
+
+          <!-- Repeat Password input -->
+          {%for listPhones in contact.phones %}
+          <div class="form-outline mb-4">
+            <input
+              type="phones"
+              id="phones"
+              name="new_phones"
+              class="form-control"
+              required
+              pattern="^[0-9]{10}$"
+              value="{{listPhones.phone}}"
+            />
+            <label class="form-label" for="phones"
+              >Phones</label
+            >
+          </div>
+          {% endfor %}
+          <div class="form-outline mb-4">
+            <input
+              type="date"
+              id="birth_date"
+              name="new_birth_date"
+              class="form-control"
+              value="{{contact.birth_date.strftime('%Y-%m-%d') if contact.birth_date else Date }}"
+            />
+            <label class="form-label" for="birth_date"
+              >Birth Date</label
+            >
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="submit" class="btn btn-primary btn-block">
+            Edit contact
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+                  <button
+                    type="button"
+                    class="btn btnIcon btn-rounded"
+                    data-bs-toggle="modal"
+                    data-bs-target="#edit"
+                  >
+                    <i
+                      class="fa fa-pencil-square-o fa-2x"
+                      aria-hidden="true"
+                    ></i>
+                  </button>
+                  <form action="/contacts" method="POST">
+                     <input type="hidden" name="contact-id" value="{{contact.id}}">
+                  <button
+                  
+                  type="submit"
+                    value="{{contact.id}}"
+                    type="button"
+                    class="btn btnIcon btn-rounded"
+                  >
+                    <i class="fa fa-trash fa-2x" aria-hidden="true"></i>
+                  </button>
+                  </form>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        {% else %}
+        <div class="d-flex w-100 mx-auto">
+          <h2>You don't have any contacts</h2>
+        </div>
+        {% endif %}
+      </div>
+    </section>
+    <script
+      src="{{ url_for('static', path='/js/modal.js') }}"
+      type="module"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+      integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

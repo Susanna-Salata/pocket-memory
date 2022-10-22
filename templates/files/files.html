@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+    <link href="{{ url_for('static', path='styles.css') }}" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{ url_for('static', path='image/owl.ico') }}"
+    />
+    <style>
+      body {
+        height: 100vh;
+        background: linear-gradient(25.06deg, #e4f1ed 20.8%, #ffffff 66.53%);
+      }
+      .btnIcon:hover > i,
+      .btnIcon:focus > i {
+        color: #007b5e;
+      }
+    </style>
+    <title>POCKET MEMORY</title>
+  </head>
+  <body>
+    <section class="nav-section d-flex w-100">
+      {% include 'components/nav.html' %}
+    </section>
+    <section class="contacts">
+      <form method="post" action="/uploadfiles" enctype="multipart/form-data" class="d-flex align-content-center justify-content-center gap-3">
+        <div class="w-50">
+          <label for="file-text" class="form-label">Upload your Files</label>
+          <input class="form-control" name="file" id="file" type="file" accept="image/*,.pdf,.doc," size="" onchange="document.getElementById('file-text').textContent = this.files.length > 0 ? this.files[0].name : 'Select a file'">
+        </div>
+        
+          <button type="submit" class="btn btn-large btn-primary h-50 mt-auto">Upload</button>
+     
+      </form>
+    </section>
+    <!-- <script>
+      const input = document.getElementById('formFileLg')
+
+      input.addEventListener('change', (event) => {
+        const target = event.target
+          if (target.files && target.files[0]) {
+
+            const maxAllowedSize = 5 * 1024 * 1024;
+            if (target.files[0].size > maxAllowedSize) {
+              target.value = `Max length ${maxAllowedSize}`
+            }
+        }
+      })
+    </script> -->
+    {% if files %}
+    {% for file in files%}
+      <ul>
+        <li>
+          <a target="_blank" href="https://www.dropbox.com/s/ch49c6qx81oyrs6/{{file.path_display}}" role="button" class="outline"
+            >{{file.name}}</a>
+        </li>
+      </ul>
+      {% endfor %}
+      {% endif %}
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+      integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

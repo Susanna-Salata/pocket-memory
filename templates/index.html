@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      href="{{ url_for('static', path='our-team.css') }}"
+      rel="stylesheet"
+    />
+    <link href="{{ url_for('static', path='styles.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static', path='news.css') }}" rel="stylesheet" />
+
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{ url_for('static', path='image/owl.ico') }}"
+    />
+    <style>
+      .arrow-down:hover {
+        color: white;
+      }
+    </style>
+    <title>POCKET MEMORY</title>
+  </head>
+  <body style="background-color:antiquewhite;">
+    <!-- Hero Section -->
+    <section>
+      {% include 'components/nav.html' %}
+
+      <div class="relative homeContainer d-flex align-items-start pt-5">
+        <div class="px-5 pt-5 text-white w-50">
+          <h1 class="display-5 fade-out">
+            Welcome to our personal helper
+            <span class="title">POCKET MEMORY</span>
+          </h1>
+          {% if not user %}
+          <div class="d-flex gap-4 mt-5">
+            <a
+              class="btn btn-primary btn-dark btn-lg"
+              href="/signup"
+              role="button"
+              >Signup</a
+            >
+            <a
+              class="btn btn-primary btn-light btn-lg"
+              href="/presentation"
+              role="button"
+              >Presentation</a
+            >
+          </div>
+          {% else %}
+          <div class="d-flex gap-4 mt-5">
+            <a
+              class="btn btn-primary btn-light btn-lg"
+              href="/presentation"
+              role="button"
+              >Presentation</a
+            >
+          </div>
+          {% endif %}
+        </div>
+        <div class="mt-auto mb-5 text-white-50 arrow-down">
+          <i class="fa fa-angle-double-down fa-4x" aria-hidden="true"></i>
+        </div>
+      </div>
+    </section>
+    <!-- About App -->
+    <section class="p-5 vh-100">
+      <iframe src="https://slides.com/susannasalata/code/embed" 
+      width="100%"
+        height="100%"
+        title="Code"
+        scrolling="no"
+        frameborder="0" 
+        webkitallowfullscreen 
+        mozallowfullscreen 
+        allowfullscreen>
+      </iframe>
+    </section>
+    <!-- News Section -->
+    {% include 'news-section.html' %}
+    <!-- Our Team -->
+    <section id="team" class="pb-5">
+      <div class="container">
+        <h5 class="section-title h1">OUR TEAM</h5>
+        <div class="row">
+          <!-- Team member -->
+          <div class="col-xs-12 col-sm-3">
+            <div class="image-flip">
+              <div class="mainflip flip-0">
+                <div class="frontside">
+                  <div class="card">
+                    <div
+                      class="card-body text-center d-flex align-center flex-column justify-content-center"
+                    >
+                      <p>
+                        <img
+                          class="img-fluid"
+                          src="https://trello-members.s3.amazonaws.com/62629bf29f2ad27c4ff251c4/1af86839369b085905ef0ff82df2c8a5/original.png"
+                          alt="card image"
+                        />
+                      </p>
+                      <h4 class="card-title">Vadym Kuzyk</h4>
+                      <p class="card-text">Backend</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="backside w-100">
+                  <div class="card">
+                    <div class="card-body text-center mt-4">
+                      <ul class="list-inline d-flex align-content-center justify-content-center gap-5 mt-5">
+                        <li class="list-inline-item">
+                          <a
+                            class="social-icon text-xs-center"
+                            target="_blank"
+                            href="https://www.linkedin.com/in/%D0%B2%D0%B0%D0%B4%D0%B8%D0%BC-%D0%BA%D1%83%D0%B7%D0%B8%D0%BA-468395250/"
+                          >
+                            <i
+                              class="fa fa-linkedin"
+                              style="font-size: 36px"
+                            ></i>
+                          </a>
+                        </li>
+                        <li class="list-inline-item">
+                          <a
+                            class="social-icon text-xs-center"
+                            target="_blank"
+                            href="https://github.com/KuVadym"
+                          >
+                            <i class="fa fa-github" style="font-size: 36px"></i>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ./Team member -->
+          <!-- Team member -->
+          <div class="col-xs-12 col-sm-3">
+            <div
+              class="image-flip"
+              ontouchstart="this.classList.toggle('hover');"
+            >
+              <div class="mainflip">
+                <div class="frontside">
+                  <div class="card">
+                    <div
+                      class="card-body text-center d-flex align-center flex-column justify-content-center"
+                    >
+                      <p>
+                        <img
+                          class="img-fluid"
+                          src="https://trello-members.s3.amazonaws.com/631b7c1148fa5a01fd563597/2e24798a95ef1200bb30b7823df42cfd/original.png"
+                          alt="card image"
+                        />
+                      </p>
+                      <h4 class="card-title">Serhii Plys</h4>
+                      <p class="card-text">Scrapping</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="backside w-100">
+                  <div class="card">
+                    <div class="card-body text-center mt-4">
+                      <ul class="list-inline  d-flex align-content-center justify-content-center gap-5 mt-5">
+                        <li class="list-inline-item">
+                          <a
+                            class="social-icon text-xs-center"
+                            target="_blank"
+                            href="https://www.linkedin.com/in/serhii-plys-389872150/"
+                          >
+                            <i
+                              class="fa fa-linkedin"
+                              style="font-size: 36px"
+                            ></i>
+                          </a>
+                        </li>
+                        <li class="list-inline-item">
+                          <a
+                            class="social-icon text-xs-center"
+                            target="_blank"
+                            href="https://github.com/SerhiiPlys"
+                          >
+                            <i class="fa fa-github" style="font-size: 36px"></i>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ./Team member -->
+          <!-- Team member -->
+          <div class="col-xs-12 col-sm-3">
+            <div
+              class="image-flip"
+              ontouchstart="this.classList.toggle('hover');"
+            >
+              <div class="mainflip">
+                <div class="frontside">
+                  <div class="card">
+                    <div
+                      class="card-body text-center d-flex align-center flex-column justify-content-center"
+                    >
+                      <p>
+                        <img
+                          class="img-fluid"
+                          src="https://trello-members.s3.amazonaws.com/631a20da47692c0189aec123/afcc3bdeaff41f08587071dda4c642f2/original.png"
+                          alt="card image"
+                        />
+                      </p>
+                      <h4 class="card-title">Susanna Salata</h4>
+                      <p class="card-text">QA</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="backside w-100">
+                  <div class="card">
+                    <div class="card-body text-center mt-4">
+                      <ul class="list-inline  d-flex align-content-center justify-content-center gap-5 mt-5">
+                        <li class="list-inline-item">
+                          <a
+                            class="social-icon text-xs-center"
+                            target="_blank"
+                            href="https://www.linkedin.com/in/susanna-salata/"
+                          >
+                            <i
+                              class="fa fa-linkedin"
+                              style="font-size: 36px"
+                            ></i>
+                          </a>
+                        </li>
+                        <li class="list-inline-item">
+                          <a
+                            class="social-icon text-xs-center"
+                            target="_blank"
+                            href="https://github.com/Susanna-Salata"
+                          >
+                            <i class="fa fa-github" style="font-size: 36px"></i>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ./Team member -->
+          <!-- Team member -->
+          <div class="col-xs-12 col-sm-3">
+            <div
+              class="image-flip"
+              ontouchstart="this.classList.toggle('hover');"
+            >
+              <div class="mainflip">
+                <div class="frontside">
+                  <div class="card">
+                    <div
+                      class="card-body text-center d-flex align-center flex-column justify-content-center"
+                    >
+                      <p>
+                        <img
+                          class="img-fluid"
+                          src="https://trello-members.s3.amazonaws.com/631b3fe0aee89e044c3b543d/5043240bfe1c2684380bc29aae017da8/original.png"
+                          alt="card image"
+                        />
+                      </p>
+                      <h4 class="card-title">Vladyslav Shumkov</h4>
+                      <p class="card-text">Frontend</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="backside w-100">
+                  <div class="card">
+                    <div class="card-body text-center mt-4">
+                      <ul class="list-inline  d-flex align-content-center justify-content-center gap-5 mt-5">
+                        <li class="list-inline-item">
+                          <a
+                            class="social-icon text-xs-center"
+                            target="_blank"
+                            href="https://www.linkedin.com/in/vladyslav-shumkov/"
+                          >
+                            <i
+                              class="fa fa-linkedin"
+                              style="font-size: 36px"
+                            ></i>
+                          </a>
+                        </li>
+                        <li class="list-inline-item">
+                          <a
+                            class="social-icon text-xs-center"
+                            target="_blank"
+                            href="https://github.com/IiIymik"
+                          >
+                            <i class="fa fa-github" style="font-size: 36px"></i>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script
+      src="{{ url_for('static', path='/js/news.js') }}"
+      type="module"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+      integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

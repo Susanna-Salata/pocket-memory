@@ -1,0 +1,46 @@
+<div
+  class="modal fade"
+  id="delete"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">POCKET MEMORY</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form action="/contacts" method="POST">
+          <!-- Name input -->
+          <div class="form-outline mb-4">
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="form-control"
+              
+            />
+            <label class="form-label" for="name">Do you wanna delete this contacts?</label>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="submit" class="btn btn-primary btn-block">
+            Delete
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
