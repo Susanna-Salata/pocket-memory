@@ -39,7 +39,7 @@ setup(name='Pocket Memory',
                 ],
         entry_points={
           'console_scripts': [
-              'pocket-memory = pocket-memory.app:app',
+              'pocket-memory = app:app',
         ],
         },
         cmdclass={
