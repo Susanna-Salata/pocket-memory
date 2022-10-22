@@ -42,10 +42,10 @@ setup(name='Pocket Memory',
               'pocket-memory = app:app',
         ],
         },
-        cmdclass={
-                'develop': PostDevelopCommand,
-                'install': PostInstallCommand,
-    }
+    #     cmdclass={
+    #             'develop': PostDevelopCommand,
+    #             'install': PostInstallCommand,
+    # }
      )
 
 
