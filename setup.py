@@ -7,4 +7,9 @@ setup(name='Pocket Memory',
       author_email='email@python.net',
       packages=[
                 ],
+      entry_points={
+          'console_scripts': [
+              'pocket-memory = pocket-memory.app:app',
+        ],
+      },
      )
