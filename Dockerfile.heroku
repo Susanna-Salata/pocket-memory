@@ -11,4 +11,5 @@ RUN adduser -D myuser
 USER myuser
 
 # $PORT is set by Heroku
-CMD gunicorn --bind 0.0.0.0:$PORT wsgi
+# CMD gunicorn --bind 0.0.0.0:$PORT wsgi
+CMD uvicorn app:app --host 0.0.0.0:$PORT
