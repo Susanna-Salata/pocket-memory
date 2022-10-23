@@ -1,11 +1,12 @@
 # start by pulling the python image
 FROM python:3.9-alpine3.16
 
+RUN mkdir /app
 # copy the requirements file into the image
-COPY ./requirements.txt /requirements.txt
+COPY ./requirements.txt /app/requirements.txt
 
 # switch working directory
-WORKDIR /
+WORKDIR /app
 
 # install libfi library
 RUN apk add --update --no-cache --virtual .tmp-build-deps \
@@ -16,7 +17,7 @@ RUN apk add --update --no-cache --virtual .tmp-build-deps \
 RUN pip install -r requirements.txt
 
 # copy every content from the local file to the image
-COPY . /
+COPY . /app
 
 
 # set environmetn variables

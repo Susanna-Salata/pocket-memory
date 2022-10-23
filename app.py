@@ -49,7 +49,7 @@ app = FastAPI(
 api_router = APIRouter()
 
 
-app.mount("/static", StaticFiles(directory="static"), name="static")
+app.mount("/static/", StaticFiles(directory="static"), name="static")
 
 
 recordService = RecordService()
@@ -311,7 +311,7 @@ app.include_router(router, prefix=settings.API_V1_STR)
 # uvicorn app:app --reload
 if __name__ == "__main__":
     config = uvicorn.Config("app:app", 
-                            port=5000,
+                            port=8000,
                             log_level="info", 
                             reload=False,
                             host="0.0.0.0")

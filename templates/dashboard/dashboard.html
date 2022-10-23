@@ -11,20 +11,20 @@
       crossorigin="anonymous"
     />
     <link
-      href="{{ url_for('static', path='/dashboard.css') }}"
+      href="/static/dashboard.css"
       rel="stylesheet"
     />
     <link
       rel="icon"
       type="image/x-icon"
-      href="{{ url_for('static', path='image/owl.ico') }}"
+      href="/static/image/owl.ico"
     />
     <title>Dashboard</title>
   </head>
   <body>
     <div id="wrapper">{% include 'dashboard/sidebar.html' %}</div>
     <script
-      src="{{url_for('static', path='/js/sideBar.js')}}"
+      src="/static/js/sideBar.js"
       type="module"
     ></script>
     <script

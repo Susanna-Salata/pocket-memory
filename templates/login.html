@@ -10,11 +10,11 @@
       integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
       crossorigin="anonymous"
     />
-    <link href="{{ url_for('static', path='styles.css') }}" rel="stylesheet" />
+    <link href="/static/styles.css" rel="stylesheet" />
     <link
       rel="icon"
       type="image/x-icon"
-      href="{{ url_for('static', path='image/owl.ico') }}"
+      href="/static/image/owl.ico"
     />
     <style>
       .body {
@@ -51,7 +51,7 @@
           >
             <a href="/" class="back-to-home">
               <img
-                src="{{ url_for('static', path='/image/big-owl.svg') }}"
+                src="/static/image/big-owl.svg"
                 class="img-fluid"
                 alt="Sample image"
               />
@@ -199,7 +199,7 @@
       </div>
     </section>
     <script
-      src="{{ url_for('static', path='/js/auth.js') }}"
+      src="/static/js/auth.js"
       type="module"
     ></script>
     <script
