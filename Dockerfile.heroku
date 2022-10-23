@@ -1,13 +1,5 @@
 FROM susannasalata/pocket_memory:latest
 
-WORKDIR /
-
-# set environmetn variables
-ENV JWT_SECRET_KEY=qwerty
-ENV JWT_REFRESH_SECRET_KEY=ytrew
-ENV MONGO_CONNECTION_STRING=mongodb+srv://VadymKu:k*V190821@cluster0.nrqiq.mongodb.net/?retryWrites=true&w=majority
-
-
 # Run the image as a non-root user
 RUN adduser -D myuser
 USER myuser
