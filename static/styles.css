@@ -124,7 +124,7 @@ body {
   width: 100%;
   aspect-ratio: 2;
   background-color: #151515;
-  background-image: image_url("./image/bg-icon.svg");
+  background-image: url("{{ url_for('static', path='/image/bg-icon.svg') }}");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 88% 0%;
