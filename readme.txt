@@ -1,4 +1,4 @@
-Pocket memory
+Pocket memory https://pocket-memory.herokuapp.com
 v.0.0.1
 In App you can find fresh news, sport news, currency and actual wwhether
 In home page shows litle presentation, four columns whith different data and short team description
