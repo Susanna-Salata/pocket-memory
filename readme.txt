@@ -1,4 +1,6 @@
-Pocket memory https://pocket-memory.herokuapp.com
+Pocket memory 
+
+<a href="https://pocket-memory.herokuapp.com"> pocket-memory.herokuapp.com</a>
 
 v.0.0.1
 In App you can find fresh news, sport news, currency and actual wwhether
