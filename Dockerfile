@@ -28,8 +28,8 @@ ENV MONGO_CONNECTION_STRING=mongodb+srv://VadymKu:k*V190821@cluster0.nrqiq.mongo
 EXPOSE 8000
 
 # Run the image as a non-root user
-RUN adduser -D myuser
-USER myuser
+#RUN adduser -D myuser
+#USER myuser
 
 #CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
 # CMD ["gunicorn", "-b", "127.0.0.1:8000", "app:app"]
