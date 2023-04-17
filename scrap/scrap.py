@@ -98,10 +98,10 @@ def scraping():
             soup = BeautifulSoup(html, 'lxml')
             datas = soup.find('aside', class_="page_rightCol")
             data = datas.find_all('article', class_="newsImgRowTime")
-            news['oboz1'] = data[0].text
-            news['oboz1_href'] = data[0].find('a').get("href")
-            news['oboz2'] = data[1].text
-            news['oboz2_href'] = data[1].find('a').get("href")
+            # news['oboz1'] = data[0].text
+            # news['oboz1_href'] = data[0].find('a').get("href")
+            # news['oboz2'] = data[1].text
+            # news['oboz2_href'] = data[1].find('a').get("href")
 
     def get_data_web5(url):
         pass

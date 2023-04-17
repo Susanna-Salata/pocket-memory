@@ -27,3 +27,21 @@ def check_birthday(birthday:str):
     if result:
         result = int(year) <= datetime.now().year
     return result
+
+
+def check_user_name(username:str):
+    if isinstance(username, str):
+        pattern = re.compile("[a-zA-Z0-9/\\._\\-!]{4:20}")
+        result = bool(re.match(pattern=pattern, string=username))
+    else:
+        result = False
+    return result
+
+
+def check_note_name(notename:str):
+    if isinstance(notename, str):
+        pattern = re.compile("[a-zA-Z0-9/\\._\\-!,]{4:50}")
+        result = bool(re.match(pattern=pattern, string=notename))
+    else:
+        result = False
+    return result

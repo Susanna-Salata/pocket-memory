@@ -3,6 +3,7 @@ from uuid import UUID
 from schemas.note_schema import NoteAuth
 from models.models_mongo import Note, Tag, Record, User
 from collections import OrderedDict
+from utils.regex import check_note_name
 
 
 class NoteService:
@@ -24,15 +25,20 @@ class NoteService:
             rec_list = []
             for rec in note.records:
                 rec_list.append(Record(description = rec.description))
-            return rec_list 
-        tags,records = await create_tag(note), await create_record(note)
-        note_in = Note(
-            name = note.name,
-            records = records,
-            tags = tags,
-            owner=user
-        )
-        return await note_in.save()
+            return rec_list
+        if check_note_name(note):
+            tags,records = await create_tag(note), await create_record(note)
+            note_in = Note(
+                name = note.name,
+                records = records,
+                tags = tags,
+                owner=user
+            )
+
+            return await note_in.save()
+        else:
+            print("Note name is too short")
+            return None
 
 
     @staticmethod
